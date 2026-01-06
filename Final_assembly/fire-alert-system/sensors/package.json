@@ -1,0 +1,13 @@
+{
+  "name": "fire-alert-sensors",
+  "version": "1.0.0",
+  "description": "Fire Alert System Sensor Simulator",
+  "main": "sensorSimulator.js",
+  "scripts": {
+    "start": "node sensorSimulator.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}
+

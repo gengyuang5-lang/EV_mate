@@ -1,0 +1,26 @@
+{
+  "name": "phase2-digital-twin-path-planning",
+  "version": "1.0.0",
+  "description": "阶段 2：数字孪生与路径规划",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:response-time": "jest tests/response-time.test.js",
+    "test:accuracy": "jest tests/accuracy.test.js",
+    "test:accessibility": "jest tests/accessibility.test.js",
+    "test:integration": "jest tests/integration.test.js"
+  },
+  "keywords": [
+    "digital-twin",
+    "path-planning",
+    "fire-escape",
+    "accessibility"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "dependencies": {}
+}
+

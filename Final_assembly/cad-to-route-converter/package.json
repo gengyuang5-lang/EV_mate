@@ -1,0 +1,29 @@
+{
+  "name": "cad-to-route-converter",
+  "version": "1.0.0",
+  "description": "CAD图纸转逃生路径规划数据转换器",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "convert": "node src/convert.js",
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "cad",
+    "route-planning",
+    "escape-route",
+    "converter"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dxf-parser": "^1.4.5",
+    "jimp": "^0.22.10",
+    "sharp": "^0.32.6",
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+

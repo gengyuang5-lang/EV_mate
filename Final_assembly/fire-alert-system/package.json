@@ -1,0 +1,21 @@
+{
+  "name": "fire-alert-system",
+  "version": "1.0.0",
+  "description": "火灾预警系统 - Fire Alert System",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../sensors && npm install",
+    "start:backend": "cd backend && node server.js",
+    "start:sensors": "cd sensors && node sensorSimulator.js",
+    "start:frontend": "cd frontend && npm start",
+    "dev:backend": "cd backend && nodemon server.js"
+  },
+  "keywords": [
+    "fire-alert",
+    "sensor",
+    "monitoring",
+    "safety"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+

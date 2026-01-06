@@ -1,0 +1,70 @@
+/**
+ * 虚拟机环境配置示例
+ * 复制此文件为 constants.js 并修改 IP 地址
+ */
+
+import { Platform } from 'react-native';
+
+// 宿主机 IP 地址（根据实际情况修改）
+// 在宿主机上运行 ipconfig (Windows) 或 ifconfig (Linux/macOS) 获取
+const HOST_IP = '192.168.1.100'; // 替换为您的宿主机 IP
+
+// Android 模拟器特殊处理
+// Android 模拟器使用 10.0.2.2 访问宿主机
+const getHostIP = () => {
+  if (Platform.OS === 'android') {
+    // 检查是否在模拟器中（可以通过其他方式判断）
+    // 这里简化处理，如果是 Android 且需要访问宿主机，使用 10.0.2.2
+    return __DEV__ ? '10.0.2.2' : HOST_IP;
+  }
+  return HOST_IP;
+};
+
+// API配置
+export const API_URL = __DEV__ 
+  ? `http://${getHostIP()}:3000`  // 开发环境 - 使用宿主机 IP
+  : 'http://your-production-url:3000';  // 生产环境
+
+export const WS_URL = __DEV__
+  ? `ws://${getHostIP()}:3000`  // WebSocket 使用宿主机 IP
+  : 'ws://your-production-url:3000';
+
+// 预警级别
+export const ALERT_LEVELS = {
+  NORMAL: 'normal',
+  WARNING: 'warning',
+  ALERT: 'alert',
+  CRITICAL: 'critical'
+};
+
+// 传感器类型
+export const SENSOR_TYPES = {
+  TEMPERATURE: 'temperature',
+  SMOKE: 'smoke',
+  CO: 'co'
+};
+
+// 地图配置
+export const MAP_CONFIG = {
+  INITIAL_LATITUDE: 39.9042,
+  INITIAL_LONGITUDE: 116.4074,
+  INITIAL_DELTA: 0.01
+};
+
+// 颜色配置
+export const COLORS = {
+  PRIMARY: '#dc2626',
+  PRIMARY_LIGHT: '#ef4444',
+  PRIMARY_DARK: '#b91c1c',
+  SUCCESS: '#22c55e',
+  WARNING: '#f59e0b',
+  DANGER: '#dc2626',
+  CRITICAL: '#991b1b',
+  BACKGROUND: '#ffffff',
+  TEXT_PRIMARY: '#1f2937',
+  TEXT_SECONDARY: '#6b7280'
+};
+
+// 默认语言
+export const DEFAULT_LANGUAGE = 'zh';
+

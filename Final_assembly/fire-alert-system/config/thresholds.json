@@ -1,0 +1,23 @@
+{
+  "temperature": {
+    "warning": 50,
+    "alert": 60,
+    "critical": 80,
+    "unit": "°C"
+  },
+  "smoke": {
+    "warning": 30,
+    "alert": 50,
+    "critical": 80,
+    "unit": "ppm"
+  },
+  "co": {
+    "warning": 25,
+    "alert": 50,
+    "critical": 100,
+    "unit": "ppm"
+  },
+  "uploadInterval": 500,
+  "alertCooldown": 30000
+}
+

@@ -1,0 +1,51 @@
+name: fire_alert_app
+description: 火灾预警系统移动端应用 (Flutter版本)
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # UI组件
+  cupertino_icons: ^1.0.2
+  
+  # 地图
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+  
+  # 网络请求
+  http: ^1.1.0
+  web_socket_channel: ^2.4.0
+  
+  # 位置服务
+  geolocator: ^10.1.0
+  permission_handler: ^11.0.0
+  
+  # 状态管理
+  provider: ^6.0.5
+  
+  # 国际化（intl由flutter_localizations自动提供）
+  
+  # 图标
+  flutter_vector_icons: ^1.0.0
+  
+  # 存储
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/
+
