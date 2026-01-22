@@ -1,4 +1,4 @@
-package com.firealertapp;
+package com.firealertapp.v2;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

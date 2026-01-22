@@ -77,6 +77,7 @@ class SensorHandler {
         value: data.temperature,
         threshold: thresholds.temperature.alert,
         location: data.location,
+        coordinates: data.coordinates || null,
         timestamp: Date.now(),
         message: {
           zh: `温度预警：${data.location} 温度达到 ${data.temperature.toFixed(1)}°C，超过预警阈值 ${thresholds.temperature.alert}°C`,
@@ -96,6 +97,7 @@ class SensorHandler {
         value: data.smoke,
         threshold: thresholds.smoke.alert,
         location: data.location,
+        coordinates: data.coordinates || null,
         timestamp: Date.now(),
         message: {
           zh: `烟雾预警：${data.location} 烟雾浓度达到 ${data.smoke.toFixed(1)}ppm，超过预警阈值 ${thresholds.smoke.alert}ppm`,
@@ -115,6 +117,7 @@ class SensorHandler {
         value: data.co,
         threshold: thresholds.co.alert,
         location: data.location,
+        coordinates: data.coordinates || null,
         timestamp: Date.now(),
         message: {
           zh: `一氧化碳预警：${data.location} CO浓度达到 ${data.co.toFixed(1)}ppm，超过预警阈值 ${thresholds.co.alert}ppm`,

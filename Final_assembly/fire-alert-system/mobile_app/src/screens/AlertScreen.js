@@ -124,7 +124,9 @@ const AlertScreen = () => {
           </View>
           <Text style={styles.alertLocation}>📍 {item.location}</Text>
           <Text style={styles.alertMessage} numberOfLines={2}>
-            {item.message?.[i18n.language] || item.message || t('alertReceived')}
+            {typeof item.message === 'object' 
+              ? (item.message?.[i18n.language] || item.message?.zh || item.message?.en || t('alertReceived'))
+              : (item.message || t('alertReceived'))}
           </Text>
         </View>
         <TouchableOpacity

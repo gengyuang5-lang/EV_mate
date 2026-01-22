@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import i18n from './i18n';
 
+// 后端服务运行在3000端口，前端运行在其他端口
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
 const WS_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:3000';
 
@@ -46,10 +47,11 @@ function App() {
   // 连接WebSocket
   const connectWebSocket = () => {
     try {
+      console.log('正在尝试连接WebSocket:', WS_URL);
       const ws = new WebSocket(WS_URL);
       
       ws.onopen = () => {
-        console.log('WebSocket连接成功');
+        console.log('✅ WebSocket连接成功');
         setConnected(true);
       };
 
@@ -63,20 +65,28 @@ function App() {
       };
 
       ws.onerror = (error) => {
-        console.error('WebSocket错误:', error);
+        console.error('❌ WebSocket错误:', error);
+        console.error('WebSocket URL:', WS_URL);
         setConnected(false);
       };
 
-      ws.onclose = () => {
-        console.log('WebSocket连接关闭');
+      ws.onclose = (event) => {
+        console.log('⚠️ WebSocket连接关闭, code:', event.code, 'reason:', event.reason);
         setConnected(false);
-        setTimeout(connectWebSocket, 3000);
+        // 只在非正常关闭时重连（code 1000是正常关闭）
+        if (event.code !== 1000) {
+          console.log('3秒后尝试重新连接...');
+          setTimeout(connectWebSocket, 3000);
+        }
       };
 
       wsRef.current = ws;
     } catch (error) {
-      console.error('WebSocket连接失败:', error);
+      console.error('❌ WebSocket连接失败:', error);
+      console.error('WebSocket URL:', WS_URL);
       setConnected(false);
+      // 连接失败时也尝试重连
+      setTimeout(connectWebSocket, 3000);
     }
   };
 

@@ -132,7 +132,7 @@ const HelpScreen = () => {
           <ActivityIndicator size="large" color="#fff" />
         ) : (
           <>
-            <Icon name="emergency" size={32} color="#fff" />
+            <Icon name="notifications-active" size={32} color="#fff" />
             <Text style={styles.helpButtonText}>{t('requestHelp')}</Text>
           </>
         )}

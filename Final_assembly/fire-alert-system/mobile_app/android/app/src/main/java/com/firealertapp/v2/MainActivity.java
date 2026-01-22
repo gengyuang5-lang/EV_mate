@@ -1,4 +1,4 @@
-package com.firealertapp;
+package com.firealertapp.v2;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

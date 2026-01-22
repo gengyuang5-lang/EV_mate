@@ -16,7 +16,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { COLORS } from '../utils/constants';
 
 const AlertPopup = ({ alert, visible, onClose, onResolve }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const fadeAnim = new Animated.Value(0);
   const scaleAnim = new Animated.Value(0.8);
 
@@ -55,7 +55,10 @@ const AlertPopup = ({ alert, visible, onClose, onResolve }) => {
   const playAlertSound = () => {
     // 使用TTS播放语音
     // 这里可以使用 react-native-tts 或其他TTS库
-    console.log('播放预警语音:', alert?.message?.[t('language')] || alert?.message);
+    const message = typeof alert?.message === 'object' 
+      ? alert?.message?.[i18n.language] || alert?.message?.zh || alert?.message?.en
+      : alert?.message;
+    console.log('播放预警语音:', message);
   };
 
   const getAlertColor = (level) => {
@@ -124,7 +127,9 @@ const AlertPopup = ({ alert, visible, onClose, onResolve }) => {
 
             <View style={styles.messageContainer}>
               <Text style={styles.messageText}>
-                {alert.message?.[t('language')] || alert.message || t('alertMessage')}
+                {typeof alert.message === 'object' 
+                  ? (alert.message?.[i18n.language] || alert.message?.zh || alert.message?.en || t('alertMessage'))
+                  : (alert.message || t('alertMessage'))}
               </Text>
             </View>
           </View>

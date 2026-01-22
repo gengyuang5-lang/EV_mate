@@ -131,7 +131,13 @@ i18n
     },
     react: {
       useSuspense: false
-    }
+    },
+    // 禁用pluralResolver以避免错误
+    pluralSeparator: '_',
+    contextSeparator: '_',
+    keySeparator: '.',
+    nsSeparator: ':',
+    compatibilityJSON: 'v3'
   });
 
 // 从存储中加载语言设置

@@ -2,13 +2,17 @@
  * 应用常量配置
  */
 
+import { Platform } from 'react-native';
+
 // API配置
+// Android模拟器需要使用10.0.2.2来访问主机的localhost
+// 真机需要使用电脑的局域网IP地址
 export const API_URL = __DEV__ 
-  ? 'http://localhost:3000'  // 开发环境
+  ? (Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000')  // 开发环境
   : 'http://your-production-url:3000';  // 生产环境
 
 export const WS_URL = __DEV__
-  ? 'ws://localhost:3000'
+  ? (Platform.OS === 'android' ? 'ws://10.0.2.2:3000' : 'ws://localhost:3000')
   : 'ws://your-production-url:3000';
 
 // 预警级别

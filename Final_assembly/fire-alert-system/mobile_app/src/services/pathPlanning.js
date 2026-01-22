@@ -296,6 +296,21 @@ const pathPlanner = new SimplePathPlanner();
  * 获取最近的出口位置
  */
 export const getNearestExit = async (currentLocation, exits = []) => {
+  // 优先使用室内地图数据
+  try {
+    const { getNearestExitFromMap } = require('./buildingMap');
+    const baseLocation = {
+      latitude: currentLocation.latitude,
+      longitude: currentLocation.longitude
+    };
+    const exit = getNearestExitFromMap(currentLocation, baseLocation);
+    if (exit) {
+      return exit;
+    }
+  } catch (error) {
+    console.warn('使用室内地图失败，使用默认逻辑:', error);
+  }
+
   if (!exits || exits.length === 0) {
     // 默认出口位置（如果没有提供）
     return {
@@ -323,6 +338,22 @@ export const getNearestExit = async (currentLocation, exits = []) => {
  * 计算逃生路线
  */
 export const calculateEscapeRoute = async (start, goal, obstacles) => {
+  // 优先使用室内地图路径规划
+  try {
+    const { generateEscapeRoute } = require('./buildingMap');
+    const baseLocation = {
+      latitude: start.latitude,
+      longitude: start.longitude
+    };
+    const route = generateEscapeRoute(start, baseLocation);
+    if (route && route.success) {
+      return route;
+    }
+  } catch (error) {
+    console.warn('使用室内地图路径规划失败，使用默认算法:', error);
+  }
+
+  // 回退到原有算法
   return await pathPlanner.calculateEscapeRoute(start, goal, obstacles);
 };
 
